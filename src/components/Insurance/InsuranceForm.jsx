@@ -2,7 +2,7 @@ import React,{ useState } from 'react';
 import MsgError from '../common/MsgError';
 import { getYearDifference, calculateBrand, getPlan } from '../../helpers';
 
-const InsuranceForm = () =>{
+const InsuranceForm = ({setSummary}) =>{
   
   //definir el state
   const [data, setData] = useState({
@@ -55,6 +55,10 @@ const InsuranceForm = () =>{
     console.log(result);
 
     //Calcular total
+    setSummary({
+      quotation: result , //cotizacion
+      data // objeto con marca, año y plan y se define de esta manera porque la propiead y state se nombran iguales
+    });
   }
 
   return (
