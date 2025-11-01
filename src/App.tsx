@@ -3,6 +3,7 @@ import Layout from './components/layout/Layout';
 import InsuranceForm from './components/Insurance/InsuranceForm';
 import Card from './components/common/Card';
 import QuoteSummary from './components/Quotation/QuoteSummary';
+import QuoteResult from './components/Quotation/QuoteResult';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   });
 
   //Destructurar datos del resumen
-  const { data } = summary;
+  const { quotation, data } = summary;
 
   return (
   <>
@@ -36,6 +37,10 @@ function App() {
         {/* Resumen de Cotizacion*/}
         <QuoteSummary
           data={data}
+        />
+        {/* Resultado de Cotizacion (totalizacion)*/}
+        <QuoteResult
+          quotation={quotation}
         />
       </Card>
     </Layout>
