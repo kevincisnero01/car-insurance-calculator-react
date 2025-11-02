@@ -3,3 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.resultado-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.resultado-enter.resultado-enter-active{
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+.resultado-exit{
+  /* El elemento que sale se posiciona de forma absoluta para no mover al nuevo */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.resultado-exit-active{
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 500ms, transform 500ms;
+}
