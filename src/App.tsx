@@ -4,6 +4,7 @@ import InsuranceForm from './components/Insurance/InsuranceForm';
 import Card from './components/common/Card';
 import QuoteSummary from './components/Quotation/QuoteSummary';
 import QuoteResult from './components/Quotation/QuoteResult';
+import Spinner from "./components/common/Spinner";
 
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       plan: ''
     }
   });
+
+  //Para manejar el spinner
+  const [isLoading, setIsLoading] = useState(false);
 
   //Destructurar datos del resumen
   const { quotation, data } = summary;
@@ -32,16 +36,19 @@ function App() {
         {/* Formulario de Seguro */}
         <InsuranceForm 
           setSummary={setSummary}
+          setIsLoading={setIsLoading}
         />
 
+        {/* Componente de estado de carga */}
+        { isLoading ? <Spinner/> : null } 
+        
+
         {/* Resumen de Cotizacion*/}
-        <QuoteSummary
-          data={data}
-        />
+        { !isLoading ? <QuoteSummary data={data} />: null  }
+
         {/* Resultado de Cotizacion (totalizacion)*/}
-        <QuoteResult
-          quotation={quotation}
-        />
+        { !isLoading ?  <QuoteResult quotation={quotation} /> : null  }
+
       </Card>
     </Layout>
   </>
