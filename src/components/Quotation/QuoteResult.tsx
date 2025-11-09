@@ -21,7 +21,7 @@ const QuoteResult = ({quotation}: QuoteResultProps) => {
                     timeout={{ enter: 500, exit: 500 }}
                 >
                     <p ref={nodeRef} className='font-medium'>
-                        El total es: <span className='font-bold text-indigo-900'>${quotation}</span>
+                        El total es: <span className='font-bold text-indigo-900'>${quotation.toFixed(2)}</span>
                     </p>
                 </CSSTransition>
             </TransitionGroup>
