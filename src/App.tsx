@@ -1,16 +1,16 @@
-import React,{useState} from 'react';
+import {useState} from 'react';
 import Layout from './components/layout/Layout';
 import InsuranceForm from './components/Insurance/InsuranceForm';
 import Card from './components/common/Card';
 import QuoteSummary from './components/Quotation/QuoteSummary';
 import QuoteResult from './components/Quotation/QuoteResult';
 import Spinner from "./components/common/Spinner";
-
+import type { QuotationSummary } from './components/Quotation/quotation.type';
 
 function App() {
   //Definir state 
   //Inicializar state de resumen con datos vacios
-  const [summary,setSummary] = useState({
+  const [summary,setSummary] = useState<QuotationSummary>({
     quotation: 0,
     data: {
       brand: '',
@@ -20,7 +20,7 @@ function App() {
   });
 
   //Para manejar el spinner
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   //Destructurar datos del resumen
   const { quotation, data } = summary;

@@ -1,11 +1,12 @@
-import React from 'react';
+import type { QuoteSummaryProps } from './quotation.type';
 
 //Componente: Resumen de Cotizacion
-const QuoteSummary = ({data}) => {
+const QuoteSummary = ({data}: QuoteSummaryProps) => {
 
     //Destructurar datos 
     const { brand, year, plan } = data;
 
+    //Verificar que no esten vacios
     if(brand === '' || year === '' || plan === '') return null;
 
     return ( 

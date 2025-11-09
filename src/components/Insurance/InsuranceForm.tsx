@@ -1,30 +1,35 @@
-import React,{ useState } from 'react';
+import { useState } from 'react';
+import type {  FormEvent, ChangeEvent } from 'react';
 import MsgError from '../common/MsgError';
 import { getYearDifference, calculateBrand, getPlan } from '../../helpers';
+import type { InsuranceFormProps, InsuranceData } from '../Quotation/quotation.type';
 
-const InsuranceForm = ({setSummary,setIsLoading}) =>{
+
+const InsuranceForm = ({setSummary,setIsLoading}: InsuranceFormProps) =>{
   
   //definir el state
-  const [data, setData] = useState({
+  const [data, setData] = useState<InsuranceData>({
     brand: '',
     year: '',
     plan: ''
   });
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<boolean>(false);
 
   //extraer valores del state
   const { brand, year, plan } = data;
 
   //manejador generico para todos los campos 
-  const handleInputChange = e =>{
+  const handleInputChange = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) =>{
+    // Tipamos 'e' como un evento de cambio que viene de un <select> O de un <input> (para los radios).
     setData({
       ...data, [e.target.name] : e.target.value
     })
   }
 
   //manejador del formulario
-  const handleSubmit = e =>{
+  const handleSubmit = (e: FormEvent) =>{
+    // Tipamos 'e' como un evento de formulario, que garantiza que e.preventDefault() es seguro.
     e.preventDefault();
 
     //Validar campos obligatorios
@@ -46,13 +51,12 @@ const InsuranceForm = ({setSummary,setIsLoading}) =>{
     //Americano 15%
     //Asiatico 5%
     //Europeo 30%
-    result = parseFloat(calculateBrand(brand) * result).toFixed(2);
+    result = calculateBrand(brand) * result;
 
     //Plan basico Aumenta 20%
     //Plan completo Aumenta 50%
-    let inscrementPlan = getPlan(plan);
-    result = parseFloat(inscrementPlan * result).toFixed(2);
-    console.log(result);
+    const incrementPlan = getPlan(plan);
+    result = incrementPlan * result;
 
     setIsLoading(true);
 
@@ -62,7 +66,7 @@ const InsuranceForm = ({setSummary,setIsLoading}) =>{
 
       //Pasar la informacion al componente principal
       setSummary({
-        quotation: result , //cotizacion
+        quotation: Number(result) , //cotizacion
         data // objeto con marca, año y plan y se define de esta manera porque "la propiead y state se nombran iguales"
       });
 

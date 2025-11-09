@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import  { useRef } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import type { QuoteResultProps } from './quotation.type';
 
 //Componente: Resultado de Cotizacion
-const QuoteResult = ({quotation}) => {
+const QuoteResult = ({quotation}: QuoteResultProps) => {
     const nodeRef = useRef(null);
     return ( 
     <>
