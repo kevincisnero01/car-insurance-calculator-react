@@ -1,9 +1,6 @@
 # 🚗 Cotizador de Seguros con React
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
 ## 📝 Descripción del Proyecto
 
@@ -11,11 +8,16 @@ Este proyecto es una Single-Page Application (SPA) desarrollada con React que of
 
 La arquitectura se basa en componentes funcionales y un flujo de datos unidireccional, garantizando un código mantenible y escalable.
 
-## ✨ Características Principales
+## 🖥️ Vista Previa
+A continuación, se muestra una captura de pantalla de la interfaz de la aplicación:
 
-- **Cotización Dinámica:** Cálculo en tiempo real del costo del seguro basado en la marca, año y plan del vehículo.
+![Capture de Pantalla](src/assets/screenshot.png)
+
+## ✨ Características Principales
+- **Filtro por Parámetros:** Permite al usuario ajustar la cotización seleccionando la marca, el año del vehículo y el tipo de plan (Básico o Completo).
+- **Cálculo Dinámico:** La aplicación calcula el costo total del seguro aplicando una lógica interna de ajuste de precios basada en los datos seleccionados.
 - **Validación de Formulario:** Controles para asegurar que todos los campos requeridos sean completados antes de procesar la cotización.
-- **Gestión de Estado Asíncrona:** Simulación de operaciones de red con estados de carga (`loading`), proporcionando feedback visual al usuario a través de un spinner.
+- **Indicador de Carga (Spinner)**: Muestra un spinner durante un breve período para simular el tiempo de procesamiento de la cotización, mejorando la percepción del rendimiento.
 - **Arquitectura Basada en Componentes:** Interfaz modularizada con componentes reutilizables y responsabilidades bien definidas (`Card`, `Spinner`, `InsuranceForm`).
 - **Animaciones Fluidas:** Integración de `react-transition-group` para presentar los resultados de la cotización con animaciones suaves, mejorando la experiencia de usuario.
 - **Diseño Responsivo:** Interfaz adaptable a diferentes tamaños de pantalla gracias al uso de Tailwind CSS.
@@ -74,6 +76,17 @@ src/
 ├── App.tsx              # Componente raíz de la aplicación
 └── main.tsx             # Punto de entrada de la aplicación
 ```
+
+## 🛣️ Hoja de Ruta (Roadmap)
+
+El proyecto busca la mejora constante. Estas son las funcionalidades planificadas para el crecimiento del cotizador:
+
+- [x] Cálculo de la Cotización: El sistema calcula el monto final basado en la marca, el año y el plan seleccionado. (Funcionalidad actual)
+- [ ] Persistencia del Último Resultado: Almacenar la última cotización en localStorage para que persista al recargar la página.
+- [ ] Selección de Coberturas Adicionales: Implementar checkboxes para que el usuario pueda agregar coberturas opcionales (ej. asistencia vial) que afecten el precio final.
+- [ ] Validación de Formularios: Agregar validaciones visuales y mensajes de error claros si el usuario no selecciona todos los campos requeridos.
+- [ ] Refactorización del Estado: Migrar la lógica de estado a la Context API o a una solución de gestión de estado más avanzada (ej. Redux o Zustand).
+- [ ] Mejora de la UI/UX: Refactorizar el diseño utilizando una librería de componentes o un framework CSS (como TailwindCSS) para una estética moderna y responsiva.
 
 ---
 
